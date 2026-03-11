@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, useContext, useCallback } from "react";
 import axios from "axios";
 
-https://erp-backend-64xp.onrender.com
+const API = "https://erp-backend-64xp.onrender.com/api";
 // ─── CONTEXTS ─────────────────────────────────────────────────────────────────
 const AuthCtx = createContext(null);
 const ToastCtx = createContext(null);
