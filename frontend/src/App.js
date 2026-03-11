@@ -255,6 +255,22 @@ function ProductsPage() {
 
  // eslint-disable-line
 
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
  // eslint-disable-line react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
@@ -343,6 +359,22 @@ function CustomersPage() {
 
  // eslint-disable-line
 
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
  // eslint-disable-line react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
@@ -408,6 +440,22 @@ function SuppliersPage() {
 
   const load = () => axios.get(`${API}/suppliers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
   useEffect(() => { load(); }, []); // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
 
  // eslint-disable-line
 
@@ -704,6 +752,22 @@ function InvoicesPage() {
 
  // eslint-disable-line
 
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
  // eslint-disable-line react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
  react-hooks/exhaustive-deps
@@ -783,6 +847,22 @@ function UsersPage() {
 
   const load = () => axios.get(`${API}/users`).then(r => setData(r.data)).catch(() => {});
   useEffect(() => { load(); }, []); // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
+
+ // eslint-disable-line
 
  // eslint-disable-line
 
