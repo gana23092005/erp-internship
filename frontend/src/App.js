@@ -241,7 +241,14 @@ function ProductsPage() {
   const [form, setForm] = useState({});
 
   const load = () => axios.get(`${API}/products`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+
 
  // eslint-disable-line
 
@@ -308,7 +315,14 @@ function CustomersPage() {
   const [form, setForm] = useState({});
 
   const load = () => axios.get(`${API}/customers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+
 
  // eslint-disable-line
 
@@ -365,7 +379,14 @@ function SuppliersPage() {
   const [form, setForm] = useState({});
 
   const load = () => axios.get(`${API}/suppliers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+
 
  // eslint-disable-line
 
@@ -627,7 +648,14 @@ function InvoicesPage() {
   const [form, setForm] = useState({});
 
   const load = () => axios.get(`${API}/invoices`).then(r => setData(r.data)).catch(() => {});
-  useEffect(() => { load(); }, []); // eslint-disable-line
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+
 
  // eslint-disable-line
 
@@ -698,7 +726,14 @@ function UsersPage() {
   const [form, setForm] = useState({});
 
   const load = () => axios.get(`${API}/users`).then(r => setData(r.data)).catch(() => {});
-  useEffect(() => { load(); }, []); // eslint-disable-line
+  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+ react-hooks/exhaustive-deps
+
 
  // eslint-disable-line
 
