@@ -2,11 +2,9 @@ import { useState, useEffect, createContext, useContext, useCallback } from "rea
 import axios from "axios";
 
 const API = "https://erp-backend-64xp.onrender.com/api";
-// ─── CONTEXTS ─────────────────────────────────────────────────────────────────
 const AuthCtx = createContext(null);
 const ToastCtx = createContext(null);
 
-// ─── TOAST SYSTEM ─────────────────────────────────────────────────────────────
 function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
   const add = useCallback((msg, type = "info") => {
@@ -30,7 +28,6 @@ function ToastProvider({ children }) {
   );
 }
 
-// ─── AUTH ─────────────────────────────────────────────────────────────────────
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const login = (u) => setUser(u);
@@ -38,7 +35,6 @@ function AuthProvider({ children }) {
   return <AuthCtx.Provider value={{ user, login, logout }}>{children}</AuthCtx.Provider>;
 }
 
-// ─── LOGIN ────────────────────────────────────────────────────────────────────
 function LoginPage() {
   const { login } = useContext(AuthCtx);
   const toast = useContext(ToastCtx);
@@ -90,7 +86,6 @@ function LoginPage() {
   );
 }
 
-// ─── STATUS BADGE ─────────────────────────────────────────────────────────────
 function StatusBadge({ status }) {
   const map = {
     Active: "badge-green", Paid: "badge-green", Delivered: "badge-green", Received: "badge-green", Completed: "badge-green",
@@ -101,7 +96,6 @@ function StatusBadge({ status }) {
   return <span className={`badge ${map[status] || "badge-gray"}`}>{status}</span>;
 }
 
-// ─── MODAL ────────────────────────────────────────────────────────────────────
 function Modal({ title, children, onClose, onSave }) {
   return (
     <div className="modal-overlay" onClick={e => e.target === e.currentTarget && onClose()}>
@@ -120,7 +114,6 @@ function Modal({ title, children, onClose, onSave }) {
   );
 }
 
-// ─── CRUD TABLE ───────────────────────────────────────────────────────────────
 function CrudTable({ title, subtitle, columns, data, onAdd, onEdit, onDelete, actions }) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -188,7 +181,6 @@ function CrudTable({ title, subtitle, columns, data, onAdd, onEdit, onDelete, ac
   );
 }
 
-// ─── DASHBOARD ────────────────────────────────────────────────────────────────
 function Dashboard() {
   const [stats, setStats] = useState({ products: 0, customers: 0, sales: 0, invoices: 0 });
 
@@ -201,7 +193,7 @@ function Dashboard() {
     ]).then(([p, c, s, i]) => {
       setStats({ products: p.data.length, customers: c.data.length, sales: s.data.length, invoices: i.data.length });
     }).catch(() => {});
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
@@ -233,62 +225,16 @@ function Dashboard() {
   );
 }
 
-// ─── PRODUCTS ─────────────────────────────────────────────────────────────────
 function ProductsPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/products`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
-
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
-
+  const load = useCallback(() => {
+    axios.get(`${API}/products`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
+  }, [toast]);
+  useEffect(() => { load(); }, [load]);
 
   const openAdd = () => { setForm({ title: "", sku: "", price: "", stock: "", reorderLevel: "", category: "Electronics" }); setModal("add"); };
   const openEdit = (row) => { setForm({ ...row }); setModal("edit"); };
@@ -337,62 +283,16 @@ function ProductsPage() {
   );
 }
 
-// ─── CUSTOMERS ────────────────────────────────────────────────────────────────
 function CustomersPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/customers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
-
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
-
+  const load = useCallback(() => {
+    axios.get(`${API}/customers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
+  }, [toast]);
+  useEffect(() => { load(); }, [load]);
 
   const openAdd = () => { setForm({ name: "", contact: "", email: "", phone: "", city: "" }); setModal("add"); };
   const openEdit = (row) => { setForm({ ...row }); setModal("edit"); };
@@ -431,60 +331,16 @@ function CustomersPage() {
   );
 }
 
-// ─── SUPPLIERS ────────────────────────────────────────────────────────────────
 function SuppliersPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/suppliers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
-  useEffect(() => { load(); }, []); // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
-
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
-
+  const load = useCallback(() => {
+    axios.get(`${API}/suppliers`).then(r => setData(r.data)).catch(() => toast("Failed to load", "error"));
+  }, [toast]);
+  useEffect(() => { load(); }, [load]);
 
   const openAdd = () => { setForm({ name: "", contact: "", email: "", phone: "", city: "" }); setModal("add"); };
   const openEdit = (row) => { setForm({ ...row }); setModal("edit"); };
@@ -523,7 +379,6 @@ function SuppliersPage() {
   );
 }
 
-// ─── SALES ORDERS ─────────────────────────────────────────────────────────────
 function SalesOrdersPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
@@ -531,11 +386,13 @@ function SalesOrdersPage() {
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/salesorders`).then(r => setData(r.data)).catch(() => {});
+  const load = useCallback(() => {
+    axios.get(`${API}/salesorders`).then(r => setData(r.data)).catch(() => {});
+  }, []);
   useEffect(() => {
     load();
     axios.get(`${API}/customers`).then(r => setCustomers(r.data)).catch(() => {});
-  }, []);
+  }, [load]);
 
   const openAdd = () => {
     setForm({ orderId: `SO-${Date.now()}`, customer: "", date: new Date().toISOString().split("T")[0], status: "Pending", total: "", items: "" });
@@ -596,7 +453,6 @@ function SalesOrdersPage() {
   );
 }
 
-// ─── PURCHASE ORDERS ──────────────────────────────────────────────────────────
 function PurchaseOrdersPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
@@ -604,11 +460,13 @@ function PurchaseOrdersPage() {
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/purchaseorders`).then(r => setData(r.data)).catch(() => {});
+  const load = useCallback(() => {
+    axios.get(`${API}/purchaseorders`).then(r => setData(r.data)).catch(() => {});
+  }, []);
   useEffect(() => {
     load();
     axios.get(`${API}/suppliers`).then(r => setSuppliers(r.data)).catch(() => {});
-  }, []);
+  }, [load]);
 
   const openAdd = () => {
     setForm({ orderId: `PO-${Date.now()}`, supplier: "", date: new Date().toISOString().split("T")[0], status: "Ordered", total: "", items: "" });
@@ -665,7 +523,6 @@ function PurchaseOrdersPage() {
   );
 }
 
-// ─── GRN ──────────────────────────────────────────────────────────────────────
 function GRNPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
@@ -673,11 +530,13 @@ function GRNPage() {
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/grns`).then(r => setData(r.data)).catch(() => {});
+  const load = useCallback(() => {
+    axios.get(`${API}/grns`).then(r => setData(r.data)).catch(() => {});
+  }, []);
   useEffect(() => {
     load();
     axios.get(`${API}/purchaseorders`).then(r => setPos(r.data)).catch(() => {});
-  }, []);
+  }, [load]);
 
   const openAdd = () => {
     setForm({ grnId: `GRN-${Date.now()}`, poId: "", supplier: "", date: new Date().toISOString().split("T")[0], items: "", status: "Completed" });
@@ -730,60 +589,16 @@ function GRNPage() {
   );
 }
 
-// ─── INVOICES ─────────────────────────────────────────────────────────────────
 function InvoicesPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/invoices`).then(r => setData(r.data)).catch(() => {});
-  useEffect(() => { load(); }, []); // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
-
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
-
+  const load = useCallback(() => {
+    axios.get(`${API}/invoices`).then(r => setData(r.data)).catch(() => {});
+  }, []);
+  useEffect(() => { load(); }, [load]);
 
   const openAdd = () => {
     setForm({ invoiceId: `INV-${Date.now()}`, soId: "", customer: "", date: new Date().toISOString().split("T")[0], due: "", amount: "", status: "Pending" });
@@ -838,60 +653,16 @@ function InvoicesPage() {
   );
 }
 
-// ─── USERS ────────────────────────────────────────────────────────────────────
 function UsersPage() {
   const toast = useContext(ToastCtx);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState({});
 
-  const load = () => axios.get(`${API}/users`).then(r => setData(r.data)).catch(() => {});
-  useEffect(() => { load(); }, []); // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
- react-hooks/exhaustive-deps
-
-
- // eslint-disable-line
-
- // eslint-disable-line
-
- // eslint-disable-line
-
-
+  const load = useCallback(() => {
+    axios.get(`${API}/users`).then(r => setData(r.data)).catch(() => {});
+  }, []);
+  useEffect(() => { load(); }, [load]);
 
   const openAdd = () => { setForm({ name: "", email: "", role: "Sales", status: "Active", joined: new Date().toISOString().split("T")[0] }); setModal("add"); };
   const openEdit = (row) => { setForm({ ...row }); setModal("edit"); };
@@ -937,7 +708,6 @@ function UsersPage() {
   );
 }
 
-// ─── SIDEBAR NAV ──────────────────────────────────────────────────────────────
 const NAV = [
   { section: "Main", items: [{ id: "dashboard", label: "Dashboard", icon: "🏠" }] },
   { section: "Inventory", items: [{ id: "products", label: "Products", icon: "📦" }, { id: "grn", label: "Goods Receipt", icon: "📋" }] },
@@ -978,7 +748,6 @@ function Sidebar({ page, setPage, collapsed, setCollapsed }) {
   );
 }
 
-// ─── APP SHELL ────────────────────────────────────────────────────────────────
 function AppShell() {
   const [page, setPage] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
@@ -999,7 +768,6 @@ function AppShell() {
   );
 }
 
-// ─── ROOT ─────────────────────────────────────────────────────────────────────
 function App() {
   const { user } = useContext(AuthCtx);
   return user ? <AppShell /> : <LoginPage />;
